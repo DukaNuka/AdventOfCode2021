@@ -30,7 +30,6 @@ class Sonar(object):
     def depth(self, value):
         self.history.append(value)
         if self._depth is None:
-            # special case handling for intial value
             self._depth = value
         elif value > self._depth:
             self._deeper += 1
@@ -41,4 +40,4 @@ class Sonar(object):
         self._depth = value
 
     def analyze_new_depth( self, new_depth ):
-        self.depth = new_depth
+        self.depth = int(new_depth)
