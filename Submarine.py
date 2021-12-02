@@ -12,7 +12,7 @@ class Submarine:
     def latitude(self):
         return self._current_latitude
 
-    def wrong_move( self, command, value ):
+    def move( self, command, value ):
         MOVE_FUNCTIONS = {
             "forward": self.move_forward,
             "up": self.move_up,
@@ -20,11 +20,11 @@ class Submarine:
         }
         MOVE_FUNCTIONS[command](value)
 
-    def wrong_parse_line( self, line ):
+    def parse_line( self, line ):
         line_content = line.split(" ")
         command = str(line_content[0].strip())
         value = int(line_content[1].strip())
-        self.wrong_move( command, value )
+        self.move( command, value )
 
     def move_down(self, value):
         self._current_depth += value
