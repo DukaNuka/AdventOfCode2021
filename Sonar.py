@@ -1,4 +1,4 @@
-class Sonar(object):
+class Sonar:
     def __init__(self):
         self._depth = None
         self._deeper = 0
