@@ -18,10 +18,9 @@ class Submarine:
             "up": self.move_up,
             "down": self.move_down,
         }
-
         MOVE_FUNCTIONS[command](value)
 
-    def parse_line( self, line ):
+    def parse_line(self, line):
         line_content = line.split(" ")
         command = str(line_content[0].strip())
         value = int(line_content[1].strip())
