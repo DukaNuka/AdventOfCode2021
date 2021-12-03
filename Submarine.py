@@ -1,8 +1,16 @@
+from Diagnostic import Diagnostic
+
+
 class Submarine:
     def __init__(self):
         self._current_depth = 0
         self._current_latitude = 0
         self._aim = 0
+        self._diagnostic = Diagnostic()
+
+    @property
+    def diagnostic(self):
+        return self._diagnostic
 
     @property
     def current_depth(self):
