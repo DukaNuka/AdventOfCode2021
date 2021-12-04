@@ -10,11 +10,11 @@ class Sonar:
         self._history = []
 
     @property
-    def sum_deeper( self ):
+    def sum_deeper(self):
         return self._sum_deeper
 
     @property
-    def sum_shallower( self ):
+    def sum_shallower(self):
         return self._sum_shallower
 
     @property
@@ -38,8 +38,8 @@ class Sonar:
         return self._depth
 
     @depth.setter
-    def depth( self, new_depth ):
-        self.compare_sums( new_depth )
+    def depth(self, new_depth):
+        self.compare_sums(new_depth)
         if self._depth is None:
             self._depth = new_depth
         elif new_depth > self._depth:
@@ -49,15 +49,15 @@ class Sonar:
             self._shallower += 1
             self._last_deeper = False
         self._depth = new_depth
-        self.history.append( new_depth )
+        self.history.append(new_depth)
         self._depth_sum = sum(self.history[-3:])
 
-    def compare_sums( self, new_depth ):
+    def compare_sums(self, new_depth):
         if len(self.history) > 2:
             if sum(self.history[-2:]) + new_depth > sum(self.history[-3:]):
-                self._sum_deeper+=1
+                self._sum_deeper += 1
             else:
-                self._sum_shallower+=1
+                self._sum_shallower += 1
 
-    def analyze_new_depth( self, new_depth ):
+    def analyze_new_depth(self, new_depth):
         self.depth = int(new_depth)
