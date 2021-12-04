@@ -1,8 +1,16 @@
+from Diagnostic import Diagnostic
+
+
 class Submarine:
     def __init__(self):
         self._current_depth = 0
         self._current_latitude = 0
         self._aim = 0
+        self._diagnostic = Diagnostic()
+
+    @property
+    def diagnostic(self):
+        return self._diagnostic
 
     @property
     def current_depth(self):
@@ -27,13 +35,14 @@ class Submarine:
         self.move(command, value)
 
     def move_down(self, value):
-        self._current_depth += value
+        self._aim += value
 
     def move_up(self, value):
-        self._current_depth -= value
+        self.move_down(value * -1)
 
     def move_forward(self, value):
         self._current_latitude += value
+        self._current_depth += value * self._aim
 
     def move_back(self, value):
-        self._current_latitude -= value
+        self.move_forward(value * -1)
